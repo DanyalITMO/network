@@ -7,13 +7,13 @@
 
 #include <string>
 
-class TcpSession {
+class TCPSession {
 public:
-    explicit TcpSession(int);
+    explicit TCPSession(int);
     std::string recv();
     void send(std::string);
 
-    ~TcpSession();
+    ~TCPSession();
 private:
     const int _buf_size{1024};
     int _sock;

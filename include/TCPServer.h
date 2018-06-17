@@ -11,20 +11,18 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include "TcpSession.h"
+#include "TCPSession.h"
 #include <list>
+#include "Server.h"
 
-
-class TCPServer {
+class TCPServer : public Server{
 public:
     explicit TCPServer(int port);
-    ~TCPServer();
-    std::shared_ptr<TcpSession> accept();
+    virtual ~TCPServer();
+    std::shared_ptr<TCPSession> accept();
 
 private:
-    std::list<std::shared_ptr<TcpSession>> _sessions;
-    std::size_t _buf_size{1024};
-    int _listener;
+    std::list<std::shared_ptr<TCPSession>> _sessions;
 };
 
 
