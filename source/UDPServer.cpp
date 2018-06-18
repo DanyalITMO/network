@@ -30,10 +30,11 @@ UDPServer::UDPServer(int port) : Server{port}
 
 UDPIncomingMessage UDPServer::recv()
 {
+   const int _buf_size = 1024;
    char _buf[_buf_size];
    struct sockaddr_in addr;//TODO add multiply connection
    socklen_t size = sizeof(addr);
-   auto bytes_read = recvfrom(_listener, _buf, 1024, 0, (struct sockaddr *) &addr, &size);
+   auto bytes_read = recvfrom(_listener, _buf, _buf_size, 0, (struct sockaddr *) &addr, &size);
 //   if(bytes_read <= 0) return "";
 
    std::string t(_buf);

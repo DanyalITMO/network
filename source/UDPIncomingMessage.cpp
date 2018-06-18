@@ -3,6 +3,7 @@
 //
 
 #include "UDPIncomingMessage.h"
+
 UDPIncomingMessage::UDPIncomingMessage(const struct sockaddr_in& addr, int socket, std::string_view msg): _addr{addr}, _server_socket{socket}, _message{msg}
 {}
 
