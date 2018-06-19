@@ -8,17 +8,24 @@
 #include <UDPClient.h>
 #include <TCPClient.h>
 #include <memory>
+enum class Protocol{
+   TCP,
+   UDP
+};
 
-template<typename... Ts>
-decltype(auto) makeClient(std::string_view type, Ts&& ... args)
+Protocol stringToProtocol(std::string_view);
+
+inline decltype(auto) makeClient(Protocol type)
 {
    std::unique_ptr<Client> client;
-   if (type == "UDP")
-      client.reset(new UDPClient(3426, std::forward<Ts>(args)...));
-   else if (type == "TCP")
-      client.reset(new TCPClient(3425, std::forward<Ts>(args)...));
+   if (type == Protocol::UDP)
+      client.reset(new UDPClient(3426));
+   else if (type == Protocol::TCP)
+      client.reset(new TCPClient(3425));
 
    return client;
 }
+
+
 
 #endif //PROTEITESTTASK_HELPER_H

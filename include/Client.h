@@ -5,6 +5,8 @@
 #ifndef PROTEITESTTASK_CLIENT_H
 #define PROTEITESTTASK_CLIENT_H
 
+#include "string"
+
 class Client {
 public:
    virtual ~Client() = default;

@@ -11,8 +11,8 @@
 
 class UDPClient : public Client {
 public:
-    UDPClient(int port);
-    ~UDPClient();
+    explicit UDPClient(int port);
+    ~UDPClient() override ;
     void send(const std::string& msg) override;
     std::string recv() override;
 
