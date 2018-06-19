@@ -11,6 +11,7 @@
 
 
 #include <cstdlib>
+#include <iostream>
 
 TCPSession::TCPSession(int sock) : _sock{sock}
 {}

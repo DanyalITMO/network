@@ -7,9 +7,9 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include <iostream>
 
 TCPClient::TCPClient(int port) {
-
     struct sockaddr_in addr;
 
     _sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -28,17 +28,17 @@ TCPClient::TCPClient(int port) {
 
 }
 
-void TCPClient::send(const std::string& msg)
-{
+void TCPClient::send(const std::string &msg) {
     ::send(_sock, msg.c_str(), msg.size(), 0);
 
 }
-std::string TCPClient::recv()
-{
+
+std::string TCPClient::recv() {
     int buf_size{1024};
     char buf[buf_size];
 
     ::recv(_sock, buf, buf_size, 0);
+    return std::string(buf);
 }
 
 TCPClient::~TCPClient() {

@@ -33,7 +33,7 @@ std::string UDPClient::recv()
     char _buf[_buf_size];
     struct sockaddr_in addr;//TODO add multiply connection
     socklen_t size = sizeof(_addr);
-    auto bytes_read = recvfrom(_sock, _buf, 1024, 0, (struct sockaddr *) &_addr, &size);
+    auto bytes_read = recvfrom(_sock, _buf, _buf_size, 0, (struct sockaddr *) &_addr, &size);
 //   if(bytes_read <= 0) return "";
 
     std::string t(_buf);
