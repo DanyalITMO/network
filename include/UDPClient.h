@@ -7,13 +7,14 @@
 
 #include <netinet/in.h>
 #include <string>
+#include "Client.h"
 
-class UDPClient {
+class UDPClient : public Client {
 public:
     UDPClient(int port);
     ~UDPClient();
-    void send(const std::string& msg);
-    std::string recv();
+    void send(const std::string& msg) override;
+    std::string recv() override;
 
 private:
     int _sock;
